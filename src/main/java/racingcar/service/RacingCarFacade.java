@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.RacingCarList;
+import racingcar.domain.WinnerRacingCarList;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class RacingCarFacade {
             carMessengerService.printRacingCarStatus(racingCar);
         }
         int maxPosition = racingCarService.racingCarMaxPosition(racingCar);
-        List<String> winnerList = racingCarService.racingCarWinner(racingCar, maxPosition);
+        WinnerRacingCarList winnerList = racingCarService.racingCarWinner(racingCar, maxPosition);
         carMessengerService.printWinner(winnerList);
     }
 

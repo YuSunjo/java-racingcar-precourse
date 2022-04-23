@@ -2,9 +2,8 @@ package racingcar.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCarList;
-import racingcar.domain.RacingCarListCreator;
+import racingcar.domain.*;
+import racingcar.domain.creator.RacingCarListCreator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,14 +69,15 @@ public class RacingCarServiceTest {
         RacingCarList racingCar = RacingCarListCreator.create(minPosition, maxPosition);
 
         // when
-        List<String> nameList = racingCarService.racingCarWinner(racingCar, maxPosition);
+        WinnerRacingCarList winnerCar = racingCarService.racingCarWinner(racingCar, maxPosition);
 
         // then
-        assertThat(nameList).hasSize(1);
-        assertThat(nameList.get(0)).isEqualTo(racingCar.getRacingCarList().get(2).getName());
+        List<RacingCar> winnerRacingCarList = winnerCar.getWinnerRacingCarList();
+        assertThat(winnerRacingCarList).hasSize(1);
+        assertThat(winnerRacingCarList.get(0).getName()).isEqualTo(racingCar.getRacingCarList().get(2).getName());
     }
 
-    @DisplayName("위치가 제일 큰 레이싱카의 이름 리스트를 찾는다. - 위치가 제일 큰 레이싱카가 하나이상일 경우")
+    @DisplayName("위치가 제일 큰 레이싱카의 이름 리스트를 찾는다. - 위치가 제일 큰 레이싱카가 둘 이상일 경우")
     @Test
     void racingCarWinner_2() {
         // given
@@ -89,12 +89,13 @@ public class RacingCarServiceTest {
         RacingCarList racingCar = RacingCarList.testInstance(Arrays.asList(pobi, sun, jo));
 
         // when
-        List<String> nameList = racingCarService.racingCarWinner(racingCar, maxPosition);
+        WinnerRacingCarList winnerCar = racingCarService.racingCarWinner(racingCar, maxPosition);
 
         // then
-        assertThat(nameList).hasSize(2);
-        assertThat(nameList.get(0)).isEqualTo(sun.getName());
-        assertThat(nameList.get(1)).isEqualTo(jo.getName());
+        List<RacingCar> winnerRacingCarList = winnerCar.getWinnerRacingCarList();
+        assertThat(winnerRacingCarList).hasSize(2);
+        assertThat(winnerRacingCarList.get(0).getName()).isEqualTo(sun.getName());
+        assertThat(winnerRacingCarList.get(1).getName()).isEqualTo(jo.getName());
     }
 
     private void assertRacingCar(List<RacingCar> racingCarList, List<String> nameList) {

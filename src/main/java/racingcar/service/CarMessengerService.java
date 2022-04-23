@@ -3,6 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarList;
+import racingcar.domain.WinnerRacingCarList;
 import racingcar.messenger.ErrorMessage;
 import racingcar.messenger.PrintMessage;
 import racingcar.messenger.ValidationUtils;
@@ -48,10 +49,7 @@ public class CarMessengerService {
 
     private void printMessage(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
-            StringBuilder repeat = new StringBuilder();
-            for (int i = 0; i < racingCar.getPosition(); i++) {
-                repeat.append("-");
-            }
+            String repeat = racingCar.racingCarPosition();
             System.out.printf(PrintMessage.CAR_STATUS.getMessage() + "%n", racingCar.getName(), repeat);
         }
     }
@@ -61,11 +59,8 @@ public class CarMessengerService {
         this.printMessage("--------------------------");
     }
 
-    public void printWinner(List<String> winnerList) {
-        StringBuilder printWinner = new StringBuilder();
-        for (String winner : winnerList) {
-            printWinner.append(winner).append(",");
-        }
+    public void printWinner(WinnerRacingCarList winnerList) {
+        String printWinner = winnerList.winnerName();
         this.printMessage(String.format(PrintMessage.WINNER.getMessage(), printWinner));
     }
 

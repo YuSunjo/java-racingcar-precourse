@@ -36,11 +36,11 @@ public class RacingCarList {
         return maxPosition;
     }
 
-    public List<String> racingCarWinner(int maxPosition) {
-        List<String> winnerList = new ArrayList<>();
+    public List<RacingCar> racingCarWinner(int maxPosition) {
+        List<RacingCar> winnerList = new ArrayList<>();
         for (RacingCar car : this.racingCarList) {
             if (maxPosition == car.getPosition()) {
-                winnerList.add(car.getName());
+                winnerList.add(RacingCar.winnerRacingCar(car.getName(), car.getPosition()));
             }
         }
         return winnerList;

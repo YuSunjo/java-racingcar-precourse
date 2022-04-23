@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.creator;
+
+import racingcar.domain.RacingCar;
 
 public class RacingCarCreator {
 

@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarList;
+import racingcar.domain.WinnerRacingCarList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +25,9 @@ public class RacingCarService {
         return racingCar.racingCarMaxPosition();
     }
 
-    public List<String> racingCarWinner(RacingCarList racingCar, int maxPosition) {
-        return racingCar.racingCarWinner(maxPosition);
+    public WinnerRacingCarList racingCarWinner(RacingCarList racingCar, int maxPosition) {
+        List<RacingCar> winnerRacingCar = racingCar.racingCarWinner(maxPosition);
+        return WinnerRacingCarList.of(winnerRacingCar);
     }
 
 }
