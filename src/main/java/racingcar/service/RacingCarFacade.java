@@ -22,8 +22,8 @@ public class RacingCarFacade {
             racingCarService.racingCarMove(racingCar);
             carMessengerService.printRacingCarStatus(racingCar);
         }
-        int maxPosition = racingCarService.getMaxPosition(racingCar);
-        List<String> winnerList = racingCarService.getWinner(racingCar, maxPosition);
+        int maxPosition = racingCarService.racingCarMaxPosition(racingCar);
+        List<String> winnerList = racingCarService.racingCarWinner(racingCar, maxPosition);
         carMessengerService.printWinner(winnerList);
     }
 

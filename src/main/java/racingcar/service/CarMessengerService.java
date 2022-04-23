@@ -46,18 +46,18 @@ public class CarMessengerService {
         System.out.println(message);
     }
 
-    private void printMessage(String name, int position) {
-        StringBuilder repeat = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            repeat.append("-");
+    private void printMessage(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            StringBuilder repeat = new StringBuilder();
+            for (int i = 0; i < racingCar.getPosition(); i++) {
+                repeat.append("-");
+            }
+            System.out.printf(PrintMessage.CAR_STATUS.getMessage() + "%n", racingCar.getName(), repeat);
         }
-        System.out.printf(PrintMessage.CAR_STATUS.getMessage() + "%n", name, repeat);
     }
 
     public void printRacingCarStatus(RacingCarList racingCar) {
-        for (RacingCar car : racingCar.getRacingCarList()) {
-            this.printMessage(car.getName(), car.getPosition());
-        }
+        this.printMessage(racingCar.getRacingCarList());
         this.printMessage("--------------------------");
     }
 

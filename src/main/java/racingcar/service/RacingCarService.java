@@ -1,9 +1,7 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarList;
-import racingcar.messenger.ValidationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,30 +17,15 @@ public class RacingCarService {
     }
 
     public void racingCarMove(RacingCarList racingCar) {
-        for (RacingCar car : racingCar.getRacingCarList()) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
-            car.movePosition(ValidationUtils.validateGo(randomNum));
-        }
+        racingCar.racingCarMove();
     }
 
-    public int getMaxPosition(RacingCarList racingCar) {
-        int maxPosition = 0;
-        for (RacingCar car : racingCar.getRacingCarList()) {
-            if (maxPosition < car.getPosition()) {
-                maxPosition = car.getPosition();
-            }
-        }
-        return maxPosition;
+    public int racingCarMaxPosition(RacingCarList racingCar) {
+        return racingCar.racingCarMaxPosition();
     }
 
-    public List<String> getWinner(RacingCarList racingCar, int maxPosition) {
-        List<String> winnerList = new ArrayList<>();
-        for (RacingCar car : racingCar.getRacingCarList()) {
-            if (maxPosition == car.getPosition()) {
-                winnerList.add(car.getName());
-            }
-        }
-        return winnerList;
+    public List<String> racingCarWinner(RacingCarList racingCar, int maxPosition) {
+        return racingCar.racingCarWinner(maxPosition);
     }
 
 }
