@@ -10,7 +10,7 @@ import java.util.List;
 public class CarMessengerService {
 
     public List<String> inputCarList() {
-        do {
+        while (true) {
             try {
                 String carString = this.input();
                 String removeBlankCarString = carString.replace(" ", "");
@@ -20,11 +20,11 @@ public class CarMessengerService {
             } catch (IllegalArgumentException e) {
                 this.printMessage(ErrorMessage.ERROR.getMessage());
             }
-        } while (true);
+        }
     }
 
     public int inputMoveNum() {
-        do {
+        while (true) {
             try {
                 String moveNum = this.input();
                 ValidationUtils.validateMoveNum(moveNum);
@@ -32,7 +32,7 @@ public class CarMessengerService {
             } catch (IllegalArgumentException e) {
                 this.printMessage(ErrorMessage.ERROR.getMessage());
             }
-        } while (true);
+        }
     }
 
     private String input() {
@@ -44,11 +44,11 @@ public class CarMessengerService {
     }
 
     private void printMessage(String name, int position) {
-        String repeat = "";
+        StringBuilder repeat = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            repeat += "-";
+            repeat.append("-");
         }
-        System.out.printf("%s : %s%n", name, repeat);
+        System.out.printf(PrintMessage.CAR_STATUS.getMessage() + "%n", name, repeat);
     }
 
     public void printRacingCarStatus(RacingCarList racingCar) {
@@ -59,11 +59,11 @@ public class CarMessengerService {
     }
 
     public void printWinner(List<String> winnerList) {
-        String printWinner = "";
+        StringBuilder printWinner = new StringBuilder();
         for (String winner : winnerList) {
-            printWinner += winner + ",";
+            printWinner.append(winner).append(",");
         }
-        printMessage(String.format("최종 우승자: %s", printWinner));
+        this.printMessage(String.format(PrintMessage.WINNER.getMessage(), printWinner));
     }
 
 }
