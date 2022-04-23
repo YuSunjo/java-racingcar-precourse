@@ -11,7 +11,7 @@ public class RacingCarService {
     public RacingCarList createRacingCar(List<String> carList) {
         List<RacingCar> racingCarList = new ArrayList<>();
         for (String name : carList) {
-            racingCarList.add(new RacingCar(name));
+            racingCarList.add(RacingCar.of(name));
         }
         return RacingCarList.of(racingCarList);
     }

@@ -19,10 +19,6 @@ public class RacingCarList {
         return racingCarList;
     }
 
-    public static RacingCarList of(List<RacingCar> racingCarList) {
-        return new RacingCarList(racingCarList);
-    }
-
     public void racingCarMove() {
         for (RacingCar car : this.racingCarList) {
             int randomNum = Randoms.pickNumberInRange(MoveNumber.MIN.getNumber(), MoveNumber.MAX.getNumber());
@@ -48,6 +44,14 @@ public class RacingCarList {
             }
         }
         return winnerList;
+    }
+
+    public static RacingCarList of(List<RacingCar> racingCarList) {
+        return new RacingCarList(racingCarList);
+    }
+
+    public static RacingCarList testInstance(List<RacingCar> racingCarList) {
+        return new RacingCarList(racingCarList);
     }
 
 }
