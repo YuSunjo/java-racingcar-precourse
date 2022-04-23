@@ -1,7 +1,6 @@
 package racingcar.service;
 
 import racingcar.domain.RacingCarList;
-import racingcar.messenger.CarMessengerService;
 
 import java.util.List;
 

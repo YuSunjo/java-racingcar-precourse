@@ -2,9 +2,6 @@ package racingcar;
 
 import racingcar.config.AppConfig;
 import racingcar.controller.RacingCarController;
-import racingcar.messenger.CarMessengerService;
-import racingcar.service.RacingCarFacade;
-import racingcar.service.RacingCarService;
 
 public class Application {
     public static void main(String[] args) {

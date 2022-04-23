@@ -1,7 +1,7 @@
 package racingcar.config;
 
 import racingcar.controller.RacingCarController;
-import racingcar.messenger.CarMessengerService;
+import racingcar.service.CarMessengerService;
 import racingcar.service.RacingCarFacade;
 import racingcar.service.RacingCarService;
 
